@@ -5,7 +5,7 @@
 # 1. clone https://github.com/logickworkshop/Flipper-IRDB
 # 2. copy existing universal remote file into the current directory (e.g 'projectors.ir')
 # 3. run script
-# 4 copy new file (e.g. 'projectors.ir') on flipper sd card into 'infraed' directory
+# 4 copy new file (e.g. 'projectors.ir') on flipper sd card into 'infrared' directory
 
 from pathlib import Path
 
