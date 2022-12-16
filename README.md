@@ -1,2 +1,2 @@
 # Flipper Apps & Scripts
-Custom Apps and Scripts for the Flipper Zero
+Read the Readme in directories for more information.
