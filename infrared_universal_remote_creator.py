@@ -18,7 +18,7 @@ def map_name(name):
 universal_type = "Projectors"
 
 # name of the command names that should be included in the universal remote
-name_list = ["up", "down", "left", "right", "menu", "ok"]
+name_list = ["up", "down", "left", "right", "menu", "ok", "source"]
 
 # map names on other names, that also should be included
 name_map = {"input" : "source", "enter": "ok"}
@@ -42,7 +42,7 @@ for path in pathlist:
 					if len(name) > 1:
 						name = map_name(name[1].lower())
 						if name in name_list:
-							current_cmd.append(f'name: {name}')
+							current_cmd.append(f'name: {name.upper()}')
 			else:
 				if line.strip() == "#":
 					current_cmd.append(line.strip())
