@@ -9,15 +9,25 @@
 
 from pathlib import Path
 
+def map_name(name):
+	if name in name_map:
+		return name_map[name]
+	return name
+
 # name of the infrared directory, for which a universal remote should be created
 universal_type = "Projectors"
 
 # name of the command names that should be included in the universal remote
 name_list = ["up", "down", "left", "right", "menu", "ok"]
 
+# map names on other names, that also should be included
+name_map = {"input" : "source", "enter": "ok"}
+
 # path to the infrared remotes directory
-pathlist = Path(f'IRDB/{universal_type}').rglob('*.ir')
+pathlist = Path(f'Flipper/Infrared/IRDB/{universal_type}').rglob('*.ir')
 cmds = []
+
+
 
 # loop over all infrared files in the specified directory
 for path in pathlist:
@@ -29,8 +39,10 @@ for path in pathlist:
 			if len(current_cmd) == 0:
 				if "name:" in line:
 					name = line.strip().split(": ")
-					if len(name) > 1 and name[1].lower() in name_list:
-						current_cmd.append(f'name: {name[1].upper()}')
+					if len(name) > 1:
+						name = map_name(name[1].lower())
+						if name in name_list:
+							current_cmd.append(f'name: {name}')
 			else:
 				if line.strip() == "#":
 					current_cmd.append(line.strip())
